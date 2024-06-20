@@ -1,8 +1,6 @@
-from http.client import HTTPException
-from fastapi import FastAPI, File, UploadFile, status
+from fastapi import FastAPI, File, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
-import aiofiles
 from embedchain import App as llm
 import os
 from dotenv import load_dotenv
