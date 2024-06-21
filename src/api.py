@@ -20,6 +20,7 @@ app.add_middleware(
 @app.get("/")
 async def root():
     r"""
+    ### Root Endpoint
     A function that serves the root endpoint of the API. It returns a FileResponse object that
     represents the "index.html" file located in the "templates" directory. This function is
     decorated with the `@app.get("/")` decorator, which means it will handle GET requests to the
