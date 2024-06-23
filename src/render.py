@@ -1,4 +1,4 @@
-class Scene: 
+class Scene:
     audioURL: str
     imgURL: str
     heading: str
