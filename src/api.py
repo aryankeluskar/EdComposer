@@ -1,3 +1,4 @@
+import json
 from typing import Annotated
 from fastapi import FastAPI, File, UploadFile, Form
 from fastapi.middleware.cors import CORSMiddleware
@@ -39,7 +40,9 @@ async def root():
 async def uploadInfo(
     file: UploadFile = File(),
     prompt: Annotated[str, Form()] = "",
-):
+    ):
     answer = await getInfo(file, prompt)
+    # convert answer which is a str, to a json object
+    answer = json.loads(answer)
 
     return {"message": f"Successfuly processed {file.filename}", "answer": answer}
