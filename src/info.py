@@ -3,11 +3,7 @@ from embedchain import App as llm
 import os
 
 
-async def getInfo(
-        file: UploadFile = File(), 
-        prompt: str = ""
-        ) -> str:
-    
+async def getInfo(file: UploadFile = File(), prompt: str = "") -> str:
     rag_info = None
 
     try:

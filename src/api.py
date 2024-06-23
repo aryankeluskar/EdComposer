@@ -40,7 +40,7 @@ async def root():
 async def uploadInfo(
     file: UploadFile = File(),
     prompt: Annotated[str, Form()] = "",
-    ):
+):
     answer = await getInfo(file, prompt)
     # convert answer which is a str, to a json object
     answer = json.loads(answer)
