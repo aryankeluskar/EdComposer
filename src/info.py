@@ -35,12 +35,7 @@ async def getInfo(file: UploadFile = File(), prompt: str = "") -> str:
 
         rag_info = model.query(querystr + prompt)
 
-        recommended_bg_color = model.query(
-            "which color does "
-            + prompt
-            + " use the most? YOU MUST ONLY RETURN THE HTML CODE OF THE COLOR WHICH IS LIGHT AND MOST SUITED FOR THE BRAND, AND NO OTHER TEXT. DO NOT RETURN GENERIC COLORS LIKE WHITE OR BLACK. DO NOT RETURN ANY DARK COLOURS"
-        )
-        print(recommended_bg_color)
+        recommended_bg_color = await getColor(model, prompt)
 
         title_slide = model.query(
             "Give me 2-3 words that form the best title slide for " + prompt
@@ -55,3 +50,120 @@ async def getInfo(file: UploadFile = File(), prompt: str = "") -> str:
         print(e)
     finally:
         await file.close()
+
+
+async def getColor(model, prompt) -> str:
+    basic_colors = [
+        "red",
+        "pink",
+        "orange",
+        "yellow",
+        "purple",
+        "green",
+        "blue",
+        "brown",
+        "white",
+    ]
+
+    red_color_dict = {
+        "IndianRed": "#CD5C5C",
+        "LightCoral": "#F08080",
+        "Salmon": "#FA8072",
+        "DarkSalmon": "#E9967A",
+        "LightSalmon": "#FFA07A",
+        "Crimson": "#DC143C",
+        "Red": "#FF0000",
+        "FireBrick": "#B22222",
+        "DarkRed": "#8B0000",
+    }
+
+    pink_color_dict = {
+        "Pink": "#FFC0CB",
+        "LightPink": "#FFB6C1",
+        "HotPink": "#FF69B4",
+        "DeepPink": "#FF1493",
+        "MediumVioletRed": "#C71585",
+        "PaleVioletRed": "#DB7093",
+    }
+
+    orange_color_dict = {
+        "LightSalmon": "#FFA07A",
+        "Coral": "#FF7F50",
+        "Tomato": "#FF6347",
+        "OrangeRed": "#FF4500",
+        "DarkOrange": "#FF8C00",
+        "Orange": "#FFA500",
+    }
+
+    yellow_color_dict = {
+        "Gold": "#FFD700",
+        "Yellow": "#FFFF00",
+        "LightYellow": "#FFFFE0",
+        "LemonChiffon": "#FFFACD",
+        "LightGoldenrodYellow": "#FAFAD2",
+        "PapayaWhip": "#FFEFD5",
+        "Moccasin": "#FFE4B5",
+        "PeachPuff": "#FFDAB9",
+        "PaleGoldenrod": "#EEE8AA",
+        "Khaki": "#F0E68C",
+        "DarkKhaki": "#BDB76B",
+    }
+
+    purple_color_dict = {
+        "Lavender": "#E6E6FA",
+        "Thistle": "#D8BFD8",
+        "Plum": "#DDA0DD",
+        "Violet": "#EE82EE",
+        "Orchid": "#DA70D6",
+        "Fuchsia": "#FF00FF",
+        "Magenta": "#FF00FF",
+        "MediumOrchid": "#BA55D3",
+        "MediumPurple": "#9370DB",
+        "RebeccaPurple": "#663399",
+        "BlueViolet": "#8A2BE2",
+        "DarkViolet": "#9400D3",
+        "DarkOrchid": "#9932CC",
+        "DarkMagenta": "#8B008B",
+        "Purple": "#800080",
+        "Indigo": "#4B0082",
+        "SlateBlue": "#6A5ACD",
+        "DarkSlateBlue": "#483D8B",
+        "MediumSlateBlue": "#7B68EE",
+    }
+
+    green_color_dict = {
+        "GreenYellow": "#ADFF2F",
+        "Chartreuse": "#7FFF00",
+        "LawnGreen": "#7CFC00",
+        "Lime": "#00FF00",
+        "LimeGreen": "#32CD32",
+        "PaleGreen": "#98FB98",
+        "LightGreen": "#90EE90",
+        "MediumSpringGreen": "#00FA9A",
+        "SpringGreen": "#00FF7F",
+        "MediumSeaGreen": "#3CB371",
+        "SeaGreen": "#2E8B57",
+        "ForestGreen": "#228B22",
+        "Green": "#008000",
+        "DarkGreen": "#006400",
+        "YellowGreen": "#9ACD32",
+        "OliveDrab": "#6B8E23",
+        "Olive": "#808000",
+        "DarkOliveGreen": "#556B2F",
+        "MediumAquamarine": "#66CDAA",
+        "DarkSeaGreen": "#8FBC8B",
+        "LightSeaGreen": "#20B2AA",
+        "DarkCyan": "#008B8B",
+        "Teal": "#008080",
+    }
+
+    recommended_bg_color = model.query(
+        "which color out of "
+        + str(basic_colors)
+        + " is most suitable for "
+        + prompt
+        + "YOU MUST ONLY RETURN THE COLOR MOST SUITED FOR THE BRAND, AND NO OTHER TEXT. DO NOT USE ANY COLOR WHICH IS NOT MENTIONED IN THE LIST"
+    )
+    print(recommended_bg_color)
+
+    return str(recommended_bg_color)
