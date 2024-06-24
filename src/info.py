@@ -35,10 +35,18 @@ async def getInfo(file: UploadFile = File(), prompt: str = "") -> str:
 
         rag_info = model.query(querystr + prompt)
 
-        recommended_bg_color = model.query("which color does "+prompt+" use the most? YOU MUST ONLY RETURN THE HTML CODE OF THE COLOR WHICH IS LIGHT AND MOST SUITED FOR THE BRAND, AND NO OTHER TEXT")
+        recommended_bg_color = model.query(
+            "which color does "
+            + prompt
+            + " use the most? YOU MUST ONLY RETURN THE HTML CODE OF THE COLOR WHICH IS LIGHT AND MOST SUITED FOR THE BRAND, AND NO OTHER TEXT. DO NOT RETURN GENERIC COLORS LIKE WHITE OR BLACK. DO NOT RETURN ANY DARK COLOURS"
+        )
         print(recommended_bg_color)
 
-        title_slide = "Stanford"
+        title_slide = model.query(
+            "Give me 2-3 words that form the best title slide for " + prompt
+        )
+        # title_slide = "Stanford"
+        print(title_slide)
 
         # print(rag_info)
         return (rag_info, recommended_bg_color, title_slide)
@@ -47,5 +55,3 @@ async def getInfo(file: UploadFile = File(), prompt: str = "") -> str:
         print(e)
     finally:
         await file.close()
-
-
