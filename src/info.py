@@ -35,7 +35,7 @@ async def getInfo(file: UploadFile = File(), prompt: str = "") -> str:
 
         rag_info = model.query(querystr + prompt)
 
-        print(rag_info)
+        # print(rag_info)
         return rag_info
 
     except Exception as e:
