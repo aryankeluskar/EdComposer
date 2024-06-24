@@ -35,10 +35,17 @@ async def getInfo(file: UploadFile = File(), prompt: str = "") -> str:
 
         rag_info = model.query(querystr + prompt)
 
+        recommended_bg_color = model.query("which color does "+prompt+" use the most? YOU MUST ONLY RETURN THE HTML CODE OF THE COLOR WHICH IS LIGHT AND MOST SUITED FOR THE BRAND, AND NO OTHER TEXT")
+        print(recommended_bg_color)
+
+        title_slide = "Stanford"
+
         # print(rag_info)
-        return rag_info
+        return (rag_info, recommended_bg_color, title_slide)
 
     except Exception as e:
         print(e)
     finally:
         await file.close()
+
+

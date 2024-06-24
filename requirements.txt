@@ -1,4 +1,5 @@
-aiofiles==23.2.1
-embedchain==0.1.111
+embedchain==0.1.112
 fastapi==0.111.0
+python-dotenv==1.0.1
+Requests==2.32.3
 uvicorn==0.30.1

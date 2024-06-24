@@ -40,18 +40,19 @@ async def uploadInfo(
     file: UploadFile = File(),
     prompt: Annotated[str, Form()] = "",
 ):
-    answer = await getInfo(file, prompt)
+    result_getInfo = await getInfo(file, prompt)
+    answer = result_getInfo[0]
     # convert answer which is a str, to a json object
     answer = json.loads(answer)
 
-    # a json object is in sample.json, bring it out and put in answer
-    # with open("sample.json", "r") as f:
-    #     answer = json.load(f)
+    USE_TEST_DATA = False
+    if USE_TEST_DATA:
+        # use the json object in sample.json as test data
+        with open("sample.json", "r") as f:
+            answer = json.load(f)
 
     # for i in answer:
     #     print(i['details'])
-
-    print(answer)
 
     img_list = await getImages(answer)
     print(img_list)
