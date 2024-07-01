@@ -157,6 +157,54 @@ async def getColor(model, prompt) -> str:
         "Teal": "#008080",
     }
 
+    blue_color_dict = {
+        "Aqua": "#00FFFF",
+        "Cyan": "#00FFFF",
+        "LightCyan": "#E0FFFF",
+        "PaleTurquoise": "#AFEEEE",
+        "Aquamarine": "#7FFFD4",
+        "Turquoise": "#40E0D0",
+        "MediumTurquoise": "#48D1CC",
+        "DarkTurquoise": "#00CED1",
+        "CadetBlue": "#5F9EA0",
+        "SteelBlue": "#4682B4",
+        "LightSteelBlue": "#B0C4DE",
+        "PowderBlue": "#B0E0E6",
+        "LightBlue": "#ADD8E6",
+        "SkyBlue": "#87CEEB",
+        "LightSkyBlue": "#87CEFA",
+        "DeepSkyBlue": "#00BFFF",
+        "DodgerBlue": "#1E90FF",
+        "CornflowerBlue": "#6495ED",
+        "MediumSlateBlue": "#7B68EE",
+        "RoyalBlue": "#4169E1",
+        "Blue": "#0000FF",
+        "MediumBlue": "#0000CD",
+        "DarkBlue": "#00008B",
+        "Navy": "#000080",
+        "MidnightBlue": "#191970"
+    }
+
+    brown_color_dict = {
+        "Cornsilk": "#FFF8DC",
+        "BlanchedAlmond": "#FFEBCD",
+        "Bisque": "#FFE4C4",
+        "NavajoWhite": "#FFDEAD",
+        "Wheat": "#F5DEB3",
+        "BurlyWood": "#DEB887",
+        "Tan": "#D2B48C",
+        "RosyBrown": "#BC8F8F",
+        "SandyBrown": "#F4A460",
+        "Goldenrod": "#DAA520",
+        "DarkGoldenrod": "#B8860B",
+        "Peru": "#CD853F",
+        "Chocolate": "#D2691E",
+        "SaddleBrown": "#8B4513",
+        "Sienna": "#A0522D",
+        "Brown": "#A52A2A",
+        "Maroon": "#800000"
+    }
+
     recommended_bg_color = model.query(
         "which color out of "
         + str(basic_colors)
