@@ -101,15 +101,15 @@ async def getColor(model, prompt) -> str:
     yellow_color_dict = {
         "Gold": "#FFD700",
         "Yellow": "#FFFF00",
-        "LightYellow": "#FFFFE0",
-        "LemonChiffon": "#FFFACD",
-        "LightGoldenrodYellow": "#FAFAD2",
-        "PapayaWhip": "#FFEFD5",
+        "Light Yellow": "#FFFFE0",
+        "Lemon Chiffon": "#FFFACD",
+        "Light Goldenrod Yellow": "#FAFAD2",
+        "Papaya Whip": "#FFEFD5",
         "Moccasin": "#FFE4B5",
-        "PeachPuff": "#FFDAB9",
-        "PaleGoldenrod": "#EEE8AA",
+        "Peach Puff": "#FFDAB9",
+        "Pale Goldenrod": "#EEE8AA",
         "Khaki": "#F0E68C",
-        "DarkKhaki": "#BDB76B",
+        "Dark Khaki": "#BDB76B",
     }
 
     purple_color_dict = {
