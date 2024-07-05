@@ -69,15 +69,26 @@ async def getColor(model, prompt) -> str:
     ]
 
     red_color_dict = {
-        "IndianRed": "#CD5C5C",
-        "LightCoral": "#F08080",
-        "Salmon": "#FA8072",
-        "DarkSalmon": "#E9967A",
-        "LightSalmon": "#FFA07A",
-        "Crimson": "#DC143C",
-        "Red": "#FF0000",
-        "FireBrick": "#B22222",
-        "DarkRed": "#8B0000",
+<<<<<<<<<<<<<<  ✨ Codeium Command 🌟 >>>>>>>>>>>>>>>>
++        "indianred": "#CD5C5C",
++        "lightcoral": "#F08080",
++        "salmon": "#FA8072",
++        "darksalmon": "#E9967A",
++        "lightsalmon": "#FFA07A",
++        "crimson": "#DC143C",
++        "red": "#FF0000",
++        "firebrick": "#B22222",
++        "darkred": "#8B0000",
+-        "IndianRed": "#CD5C5C",
+-        "LightCoral": "#F08080",
+-        "Salmon": "#FA8072",
+-        "DarkSalmon": "#E9967A",
+-        "LightSalmon": "#FFA07A",
+-        "Crimson": "#DC143C",
+-        "Red": "#FF0000",
+-        "FireBrick": "#B22222",
+-        "DarkRed": "#8B0000",
+<<<<<<<  bf3c56d1-27d3-42fb-bd56-822f62c33da1  >>>>>>>
     }
 
     pink_color_dict = {
@@ -219,7 +230,8 @@ async def getColor(model, prompt) -> str:
     )
     color_group = color_group.lower()
     color_group = color_group
-    print(color_group)
+
+    print("Color Group is" + color_group)
 
     # obtain recommended color group by asking AI to choose one out of the many in the color_group's dict
     recommended_bg_color = color_group
@@ -313,8 +325,22 @@ async def getColor(model, prompt) -> str:
         if recommended_bg_color in pink_color_dict.keys():
             hex_color = pink_color_dict[recommended_bg_color]
 
+    recommended_fg_color = model.query(
+        "If the background color is "
+        + recommended_bg_color
+        + " "
+        + color_group
+        + "then which color is most suitable foreground color for the text related to"
+        + prompt
+        + "YOU MUST ONLY RETURN THE COLOR MOST SUITED FOR THE BRAND, AND NO OTHER TEXT. DO NOT USE ANY COLOR WHICH IS NOT MENTIONED IN THE LIST"
+    )
+
+    print(recommended_fg_color)
+
     if hex_color == "default":
+        print("default encountered", recommended_bg_color)
         hex_color = "#000000"
 
+    print(recommended_bg_color)
     print(str(hex_color))
     return str(hex_color)

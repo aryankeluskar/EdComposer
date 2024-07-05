@@ -43,6 +43,8 @@ async def uploadInfo(
     result_getInfo = await getInfo(file, prompt)
     # print(result_getInfo)
     answer = result_getInfo[0]
+    title_slide_text = result_getInfo[1]
+    slides_bg_colors = result_getInfo[2]
     # convert answer which is a str, to a json object
     answer = json.loads(answer)
 
