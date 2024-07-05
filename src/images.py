@@ -13,6 +13,7 @@ async def getImages(info):
         response = requests.get(
             f"https://edcomposer.vercel.app/api/getGoogleResult?search={i['image']}. powerpoint presentation clipart style."
         )
+        
         img_url_list.append(response.json()[0])
 
     return img_url_list

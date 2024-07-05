@@ -207,18 +207,22 @@ async def getColor(model, prompt) -> str:
         "brown": "#A52A2A",
         "maroon": "#800000",
     }
-    
+
     color_group = model.query(
-        "which color out of "
-        + str(basic_colors)
+        "which color strictly out of "
+        + str(basic_colors).replace("[", "").replace("]", "").replace("'", "")
         + " is most suitable for "
         + prompt
-        + "YOU MUST ONLY RETURN THE COLOR MOST SUITED FOR THE BRAND, AND NO OTHER TEXT. DO NOT USE ANY COLOR WHICH IS NOT MENTIONED IN THE LIST"
+        + "YOU MUST ONLY RETURN THE COLOR MOST SUITED FOR THE BRAND, AND NO OTHER TEXT. ONLY PICK A COLOR FROM THE COLORS IN "
+        + str(basic_colors).replace("[", "").replace("]", "").replace("'", "")
     )
     color_group = color_group.lower()
     color_group = color_group
 
-    print("Color Group is" + color_group)
+    # print elements of str(basic_colors) but without [ and ] and '
+    print()
+    print("--------------")
+    print("Color Group is " + color_group)
 
     # obtain recommended color group by asking AI to choose one out of the many in the color_group's dict
     recommended_bg_color = color_group
@@ -326,7 +330,28 @@ async def getColor(model, prompt) -> str:
 
     if hex_color == "default":
         print("default encountered", recommended_bg_color)
-        hex_color = "#000000"
+
+        # search through all of the dicts to find recommended_bg_color in keys, do an if elif ladder
+        if recommended_bg_color in red_color_dict.keys():
+            hex_color = red_color_dict[recommended_bg_color]
+        elif recommended_bg_color in pink_color_dict.keys():
+            hex_color = pink_color_dict[recommended_bg_color]
+        elif recommended_bg_color in orange_color_dict.keys():
+            hex_color = orange_color_dict[recommended_bg_color]
+        elif recommended_bg_color in yellow_color_dict.keys():
+            hex_color = yellow_color_dict[recommended_bg_color]
+        elif recommended_bg_color in green_color_dict.keys():
+            hex_color = green_color_dict[recommended_bg_color]
+        elif recommended_bg_color in blue_color_dict.keys():
+            hex_color = blue_color_dict[recommended_bg_color]
+        elif recommended_bg_color in brown_color_dict.keys():
+            hex_color = brown_color_dict[recommended_bg_color]
+        elif recommended_bg_color in purple_color_dict.keys():
+            hex_color = purple_color_dict[recommended_bg_color]
+
+
+        if hex_color == "default":
+            hex_color = "#000000"
 
     print(recommended_bg_color)
     print(str(hex_color))
