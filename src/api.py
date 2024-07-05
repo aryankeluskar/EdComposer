@@ -41,6 +41,7 @@ async def uploadInfo(
     prompt: Annotated[str, Form()] = "",
 ):
     result_getInfo = await getInfo(file, prompt)
+    # print(result_getInfo)
     answer = result_getInfo[0]
     # convert answer which is a str, to a json object
     answer = json.loads(answer)

@@ -6,11 +6,15 @@ import os
 async def getInfo(file: UploadFile = File(), prompt: str = "") -> str:
     rag_info = None
 
+    # print("reached 1")
+
     try:
         contents = await file.read()
         os.environ["OPENAI_API_KEY"] = os.getenv("OPENAI_API_KEY")
         model = llm()
         model.reset()
+        # print("reached 2")
+
 
         print(file.filename)
         with open(file.filename, "wb") as f:
@@ -40,8 +44,10 @@ async def getInfo(file: UploadFile = File(), prompt: str = "") -> str:
         title_slide = model.query(
             "Give me 2-3 words that form the best title slide for " + prompt
         )
-        # title_slide = "Stanford"
         print(title_slide)
+
+        # print("reached 2")
+
 
         # print(rag_info)
         return (rag_info, recommended_bg_color, title_slide)
@@ -62,7 +68,6 @@ async def getColor(model, prompt) -> str:
         "green",
         "blue",
         "brown",
-        "white",
     ]
 
     red_color_dict = {
@@ -182,7 +187,7 @@ async def getColor(model, prompt) -> str:
         "MediumBlue": "#0000CD",
         "DarkBlue": "#00008B",
         "Navy": "#000080",
-        "MidnightBlue": "#191970"
+        "MidnightBlue": "#191970",
     }
 
     brown_color_dict = {
@@ -202,16 +207,95 @@ async def getColor(model, prompt) -> str:
         "SaddleBrown": "#8B4513",
         "Sienna": "#A0522D",
         "Brown": "#A52A2A",
-        "Maroon": "#800000"
+        "Maroon": "#800000",
     }
 
-    recommended_bg_color = model.query(
+    # ask AI for color group
+
+    color_group = model.query(
         "which color out of "
         + str(basic_colors)
         + " is most suitable for "
         + prompt
         + "YOU MUST ONLY RETURN THE COLOR MOST SUITED FOR THE BRAND, AND NO OTHER TEXT. DO NOT USE ANY COLOR WHICH IS NOT MENTIONED IN THE LIST"
     )
-    print(recommended_bg_color)
+    color_group = color_group.lower()
+    color_group = color_group
+    print(color_group)
 
+    # obtain recommended color group by asking AI to choose one out of the many in the color_group's dict
+    recommended_bg_color = color_group
+    if color_group == "red":
+        recommended_bg_color = model.query(
+        "which color out of "
+        + str(red_color_dict.keys())
+        + " is most suitable for "
+        + prompt
+        + "YOU MUST ONLY RETURN THE COLOR MOST SUITED FOR THE BRAND, AND NO OTHER TEXT. DO NOT USE ANY COLOR WHICH IS NOT MENTIONED IN THE LIST"
+        )
+
+    if color_group == "green":
+        recommended_bg_color = model.query(
+        "which color out of "
+        + str(green_color_dict.keys())
+        + " is most suitable for "
+        + prompt
+        + "YOU MUST ONLY RETURN THE COLOR MOST SUITED FOR THE BRAND, AND NO OTHER TEXT. DO NOT USE ANY COLOR WHICH IS NOT MENTIONED IN THE LIST"
+        )
+
+    if color_group == "blue":
+        recommended_bg_color = model.query(
+        "which color out of "
+        + str(blue_color_dict.keys())
+        + " is most suitable for "
+        + prompt
+        + "YOU MUST ONLY RETURN THE COLOR MOST SUITED FOR THE BRAND, AND NO OTHER TEXT. DO NOT USE ANY COLOR WHICH IS NOT MENTIONED IN THE LIST"
+        )
+
+    if color_group == "brown":
+        recommended_bg_color = model.query(
+        "which color out of "
+        + str(brown_color_dict.keys())
+        + " is most suitable for "
+        + prompt
+        + "YOU MUST ONLY RETURN THE COLOR MOST SUITED FOR THE BRAND, AND NO OTHER TEXT. DO NOT USE ANY COLOR WHICH IS NOT MENTIONED IN THE LIST"
+        )
+
+    if color_group == "purple":
+        recommended_bg_color = model.query(
+        "which color out of "
+        + str(purple_color_dict.keys())
+        + " is most suitable for "
+        + prompt
+        + "YOU MUST ONLY RETURN THE COLOR MOST SUITED FOR THE BRAND, AND NO OTHER TEXT. DO NOT USE ANY COLOR WHICH IS NOT MENTIONED IN THE LIST"
+        )
+
+    if color_group == "orange":
+        recommended_bg_color = model.query(
+        "which color out of "
+        + str(orange_color_dict.keys())
+        + " is most suitable for "
+        + prompt
+        + "YOU MUST ONLY RETURN THE COLOR MOST SUITED FOR THE BRAND, AND NO OTHER TEXT. DO NOT USE ANY COLOR WHICH IS NOT MENTIONED IN THE LIST"
+        )
+
+    if color_group == "yellow":
+        recommended_bg_color = model.query(
+        "which color out of "
+        + str(yellow_color_dict.keys())
+        + " is most suitable for "
+        + prompt
+        + "YOU MUST ONLY RETURN THE COLOR MOST SUITED FOR THE BRAND, AND NO OTHER TEXT. DO NOT USE ANY COLOR WHICH IS NOT MENTIONED IN THE LIST"
+        )
+
+    if color_group == "pink":
+        recommended_bg_color = model.query(
+        "which color out of "
+        + str(pink_color_dict.keys())
+        + " is most suitable for "
+        + prompt
+        + "YOU MUST ONLY RETURN THE COLOR MOST SUITED FOR THE BRAND, AND NO OTHER TEXT. DO NOT USE ANY COLOR WHICH IS NOT MENTIONED IN THE LIST"
+        )    
+    
+    print(str(recommended_bg_color))
     return str(recommended_bg_color)
