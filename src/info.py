@@ -69,35 +69,24 @@ async def getColor(model, prompt) -> str:
     ]
 
     red_color_dict = {
-<<<<<<<<<<<<<<  ✨ Codeium Command 🌟 >>>>>>>>>>>>>>>>
-+        "indianred": "#CD5C5C",
-+        "lightcoral": "#F08080",
-+        "salmon": "#FA8072",
-+        "darksalmon": "#E9967A",
-+        "lightsalmon": "#FFA07A",
-+        "crimson": "#DC143C",
-+        "red": "#FF0000",
-+        "firebrick": "#B22222",
-+        "darkred": "#8B0000",
--        "IndianRed": "#CD5C5C",
--        "LightCoral": "#F08080",
--        "Salmon": "#FA8072",
--        "DarkSalmon": "#E9967A",
--        "LightSalmon": "#FFA07A",
--        "Crimson": "#DC143C",
--        "Red": "#FF0000",
--        "FireBrick": "#B22222",
--        "DarkRed": "#8B0000",
-<<<<<<<  bf3c56d1-27d3-42fb-bd56-822f62c33da1  >>>>>>>
+        "indian red": "#CD5C5C",
+        "light coral": "#F08080",
+        "salmon": "#FA8072",
+        "dark salmon": "#E9967A",
+        "light salmon": "#FFA07A",
+        "crimson": "#DC143C",
+        "red": "#FF0000",
+        "firebrick": "#B22222",
+        "dark red": "#8B0000",
     }
 
     pink_color_dict = {
-        "Pink": "#FFC0CB",
-        "LightPink": "#FFB6C1",
-        "HotPink": "#FF69B4",
-        "DeepPink": "#FF1493",
-        "MediumVioletRed": "#C71585",
-        "PaleVioletRed": "#DB7093",
+        "pink": "#FFC0CB",
+        "light pink": "#FFB6C1",
+        "hot pink": "#FF69B4",
+        "deep pink": "#FF1493",
+        "medium violet red": "#C71585",
+        "pale violet red": "#DB7093",
     }
 
     orange_color_dict = {
