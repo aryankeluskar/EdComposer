@@ -135,81 +135,79 @@ async def getColor(model, prompt) -> str:
     }
 
     green_color_dict = {
-        "GreenYellow": "#ADFF2F",
-        "Chartreuse": "#7FFF00",
-        "LawnGreen": "#7CFC00",
-        "Lime": "#00FF00",
-        "LimeGreen": "#32CD32",
-        "PaleGreen": "#98FB98",
-        "LightGreen": "#90EE90",
-        "MediumSpringGreen": "#00FA9A",
-        "SpringGreen": "#00FF7F",
-        "MediumSeaGreen": "#3CB371",
-        "SeaGreen": "#2E8B57",
-        "ForestGreen": "#228B22",
-        "Green": "#008000",
-        "DarkGreen": "#006400",
-        "YellowGreen": "#9ACD32",
-        "OliveDrab": "#6B8E23",
-        "Olive": "#808000",
-        "DarkOliveGreen": "#556B2F",
-        "MediumAquamarine": "#66CDAA",
-        "DarkSeaGreen": "#8FBC8B",
-        "LightSeaGreen": "#20B2AA",
-        "DarkCyan": "#008B8B",
-        "Teal": "#008080",
+        "greenyellow": "#ADFF2F",
+        "chartreuse": "#7FFF00",
+        "lawn green": "#7CFC00",
+        "lime": "#00FF00",
+        "lime green": "#32CD32",
+        "pale green": "#98FB98",
+        "light green": "#90EE90",
+        "medium spring green": "#00FA9A",
+        "spring green": "#00FF7F",
+        "medium sea green": "#3CB371",
+        "sea green": "#2E8B57",
+        "forest green": "#228B22",
+        "green": "#008000",
+        "dark green": "#006400",
+        "yellow green": "#9ACD32",
+        "olive drab": "#6B8E23",
+        "olive": "#808000",
+        "dark olive green": "#556B2F",
+        "medium aquamarine": "#66CDAA",
+        "dark sea green": "#8FBC8B",
+        "light sea green": "#20B2AA",
+        "dark cyan": "#008B8B",
+        "teal": "#008080",
     }
 
     blue_color_dict = {
-        "Aqua": "#00FFFF",
-        "Cyan": "#00FFFF",
-        "LightCyan": "#E0FFFF",
-        "PaleTurquoise": "#AFEEEE",
-        "Aquamarine": "#7FFFD4",
-        "Turquoise": "#40E0D0",
-        "MediumTurquoise": "#48D1CC",
-        "DarkTurquoise": "#00CED1",
-        "CadetBlue": "#5F9EA0",
-        "SteelBlue": "#4682B4",
-        "LightSteelBlue": "#B0C4DE",
-        "PowderBlue": "#B0E0E6",
-        "LightBlue": "#ADD8E6",
-        "SkyBlue": "#87CEEB",
-        "LightSkyBlue": "#87CEFA",
-        "DeepSkyBlue": "#00BFFF",
-        "DodgerBlue": "#1E90FF",
-        "CornflowerBlue": "#6495ED",
-        "MediumSlateBlue": "#7B68EE",
-        "RoyalBlue": "#4169E1",
-        "Blue": "#0000FF",
-        "MediumBlue": "#0000CD",
-        "DarkBlue": "#00008B",
-        "Navy": "#000080",
-        "MidnightBlue": "#191970",
+        "aqua": "#00FFFF",
+        "cyan": "#00FFFF",
+        "light cyan": "#E0FFFF",
+        "pale turquoise": "#AFEEEE",
+        "aquamarine": "#7FFFD4",
+        "turquoise": "#40E0D0",
+        "medium turquoise": "#48D1CC",
+        "dark turquoise": "#00CED1",
+        "cadet blue": "#5F9EA0",
+        "steel blue": "#4682B4",
+        "light steel blue": "#B0C4DE",
+        "powder blue": "#B0E0E6",
+        "light blue": "#ADD8E6",
+        "sky blue": "#87CEEB",
+        "light sky blue": "#87CEFA",
+        "deep sky blue": "#00BFFF",
+        "dodger blue": "#1E90FF",
+        "cornflower blue": "#6495ED",
+        "medium slate blue": "#7B68EE",
+        "royal blue": "#4169E1",
+        "blue": "#0000FF",
+        "medium blue": "#0000CD",
+        "dark blue": "#00008B",
+        "navy": "#000080",
+        "midnight blue": "#191970",
     }
 
     brown_color_dict = {
-        "Cornsilk": "#FFF8DC",
-        "BlanchedAlmond": "#FFEBCD",
-        "Bisque": "#FFE4C4",
-        "NavajoWhite": "#FFDEAD",
-        "Wheat": "#F5DEB3",
-        "BurlyWood": "#DEB887",
-        "Tan": "#D2B48C",
-        "RosyBrown": "#BC8F8F",
-        "SandyBrown": "#F4A460",
-        "Goldenrod": "#DAA520",
-        "DarkGoldenrod": "#B8860B",
-        "Peru": "#CD853F",
-        "Chocolate": "#D2691E",
-        "SaddleBrown": "#8B4513",
-        "Sienna": "#A0522D",
-        "Brown": "#A52A2A",
-        "Maroon": "#800000",
+        "cornsilk": "#FFF8DC",
+        "blanched almond": "#FFEBCD",
+        "bisque": "#FFE4C4",
+        "navajo white": "#FFDEAD",
+        "wheat": "#F5DEB3",
+        "burly wood": "#DEB887",
+        "tan": "#D2B48C",
+        "rosy brown": "#BC8F8F",
+        "sandy brown": "#F4A460",
+        "goldenrod": "#DAA520",
+        "dark goldenrod": "#B8860B",
+        "peru": "#CD853F",
+        "chocolate": "#D2691E",
+        "saddle brown": "#8B4513",
+        "sienna": "#A0522D",
+        "brown": "#A52A2A",
+        "maroon": "#800000",
     }
-
-    # ask AI for color group
-
+    
     color_group = model.query(
         "which color out of "
         + str(basic_colors)
@@ -234,7 +232,7 @@ async def getColor(model, prompt) -> str:
             + prompt
             + "YOU MUST ONLY RETURN THE COLOR MOST SUITED FOR THE BRAND, AND NO OTHER TEXT. DO NOT USE ANY COLOR WHICH IS NOT MENTIONED IN THE LIST"
         )
-        if recommended_bg_color in red_color_dict.keys():
+        if recommended_bg_color.lower() in red_color_dict.keys():
             hex_color = red_color_dict[recommended_bg_color]
 
     if color_group == "green":
@@ -245,7 +243,7 @@ async def getColor(model, prompt) -> str:
             + prompt
             + "YOU MUST ONLY RETURN THE COLOR MOST SUITED FOR THE BRAND, AND NO OTHER TEXT. DO NOT USE ANY COLOR WHICH IS NOT MENTIONED IN THE LIST"
         )
-        if recommended_bg_color in green_color_dict.keys():
+        if recommended_bg_color.lower() in green_color_dict.keys():
             hex_color = green_color_dict[recommended_bg_color]
 
     if color_group == "blue":
@@ -256,7 +254,7 @@ async def getColor(model, prompt) -> str:
             + prompt
             + "YOU MUST ONLY RETURN THE COLOR MOST SUITED FOR THE BRAND, AND NO OTHER TEXT. DO NOT USE ANY COLOR WHICH IS NOT MENTIONED IN THE LIST"
         )
-        if recommended_bg_color in blue_color_dict.keys():
+        if recommended_bg_color.lower() in blue_color_dict.keys():
             hex_color = blue_color_dict[recommended_bg_color]
 
     if color_group == "brown":
@@ -267,7 +265,7 @@ async def getColor(model, prompt) -> str:
             + prompt
             + "YOU MUST ONLY RETURN THE COLOR MOST SUITED FOR THE BRAND, AND NO OTHER TEXT. DO NOT USE ANY COLOR WHICH IS NOT MENTIONED IN THE LIST"
         )
-        if recommended_bg_color in brown_color_dict.keys():
+        if recommended_bg_color.lower() in brown_color_dict.keys():
             hex_color = brown_color_dict[recommended_bg_color]
 
     if color_group == "purple":
@@ -278,7 +276,7 @@ async def getColor(model, prompt) -> str:
             + prompt
             + "YOU MUST ONLY RETURN THE COLOR MOST SUITED FOR THE BRAND, AND NO OTHER TEXT. DO NOT USE ANY COLOR WHICH IS NOT MENTIONED IN THE LIST"
         )
-        if recommended_bg_color in purple_color_dict.keys():
+        if recommended_bg_color.lower() in purple_color_dict.keys():
             hex_color = purple_color_dict[recommended_bg_color]
 
     if color_group == "orange":
@@ -289,7 +287,7 @@ async def getColor(model, prompt) -> str:
             + prompt
             + "YOU MUST ONLY RETURN THE COLOR MOST SUITED FOR THE BRAND, AND NO OTHER TEXT. DO NOT USE ANY COLOR WHICH IS NOT MENTIONED IN THE LIST"
         )
-        if recommended_bg_color in orange_color_dict.keys():
+        if recommended_bg_color.lower() in orange_color_dict.keys():
             hex_color = orange_color_dict[recommended_bg_color]
 
     if color_group == "yellow":
@@ -300,7 +298,7 @@ async def getColor(model, prompt) -> str:
             + prompt
             + "YOU MUST ONLY RETURN THE COLOR MOST SUITED FOR THE BRAND, AND NO OTHER TEXT. DO NOT USE ANY COLOR WHICH IS NOT MENTIONED IN THE LIST"
         )
-        if recommended_bg_color in yellow_color_dict.keys():
+        if recommended_bg_color.lower() in yellow_color_dict.keys():
             hex_color = yellow_color_dict[recommended_bg_color]
 
     if color_group == "pink":
@@ -311,7 +309,7 @@ async def getColor(model, prompt) -> str:
             + prompt
             + "YOU MUST ONLY RETURN THE COLOR MOST SUITED FOR THE BRAND, AND NO OTHER TEXT. DO NOT USE ANY COLOR WHICH IS NOT MENTIONED IN THE LIST"
         )
-        if recommended_bg_color in pink_color_dict.keys():
+        if recommended_bg_color.lower() in pink_color_dict.keys():
             hex_color = pink_color_dict[recommended_bg_color]
 
     recommended_fg_color = model.query(
@@ -324,7 +322,7 @@ async def getColor(model, prompt) -> str:
         + "YOU MUST ONLY RETURN THE COLOR MOST SUITED FOR THE BRAND, AND NO OTHER TEXT. DO NOT USE ANY COLOR WHICH IS NOT MENTIONED IN THE LIST"
     )
 
-    print(recommended_fg_color)
+    print(recommended_fg_color.lower())
 
     if hex_color == "default":
         print("default encountered", recommended_bg_color)
