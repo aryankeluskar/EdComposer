@@ -223,6 +223,8 @@ async def getColor(model, prompt) -> str:
 
     # obtain recommended color group by asking AI to choose one out of the many in the color_group's dict
     recommended_bg_color = color_group
+    hex_color = "default"
+
     if color_group == "red":
         recommended_bg_color = model.query(
             "which color out of "
@@ -231,6 +233,8 @@ async def getColor(model, prompt) -> str:
             + prompt
             + "YOU MUST ONLY RETURN THE COLOR MOST SUITED FOR THE BRAND, AND NO OTHER TEXT. DO NOT USE ANY COLOR WHICH IS NOT MENTIONED IN THE LIST"
         )
+        if recommended_bg_color in red_color_dict.keys():
+            hex_color = red_color_dict[recommended_bg_color]
 
     if color_group == "green":
         recommended_bg_color = model.query(
@@ -240,6 +244,8 @@ async def getColor(model, prompt) -> str:
             + prompt
             + "YOU MUST ONLY RETURN THE COLOR MOST SUITED FOR THE BRAND, AND NO OTHER TEXT. DO NOT USE ANY COLOR WHICH IS NOT MENTIONED IN THE LIST"
         )
+        if recommended_bg_color in green_color_dict.keys():
+            hex_color = green_color_dict[recommended_bg_color]
 
     if color_group == "blue":
         recommended_bg_color = model.query(
@@ -249,6 +255,8 @@ async def getColor(model, prompt) -> str:
             + prompt
             + "YOU MUST ONLY RETURN THE COLOR MOST SUITED FOR THE BRAND, AND NO OTHER TEXT. DO NOT USE ANY COLOR WHICH IS NOT MENTIONED IN THE LIST"
         )
+        if recommended_bg_color in blue_color_dict.keys():
+            hex_color = blue_color_dict[recommended_bg_color]
 
     if color_group == "brown":
         recommended_bg_color = model.query(
@@ -258,6 +266,8 @@ async def getColor(model, prompt) -> str:
             + prompt
             + "YOU MUST ONLY RETURN THE COLOR MOST SUITED FOR THE BRAND, AND NO OTHER TEXT. DO NOT USE ANY COLOR WHICH IS NOT MENTIONED IN THE LIST"
         )
+        if recommended_bg_color in brown_color_dict.keys():
+            hex_color = brown_color_dict[recommended_bg_color]
 
     if color_group == "purple":
         recommended_bg_color = model.query(
@@ -267,6 +277,8 @@ async def getColor(model, prompt) -> str:
             + prompt
             + "YOU MUST ONLY RETURN THE COLOR MOST SUITED FOR THE BRAND, AND NO OTHER TEXT. DO NOT USE ANY COLOR WHICH IS NOT MENTIONED IN THE LIST"
         )
+        if recommended_bg_color in purple_color_dict.keys():
+            hex_color = purple_color_dict[recommended_bg_color]
 
     if color_group == "orange":
         recommended_bg_color = model.query(
@@ -276,6 +288,8 @@ async def getColor(model, prompt) -> str:
             + prompt
             + "YOU MUST ONLY RETURN THE COLOR MOST SUITED FOR THE BRAND, AND NO OTHER TEXT. DO NOT USE ANY COLOR WHICH IS NOT MENTIONED IN THE LIST"
         )
+        if recommended_bg_color in orange_color_dict.keys():
+            hex_color = orange_color_dict[recommended_bg_color]
 
     if color_group == "yellow":
         recommended_bg_color = model.query(
@@ -285,6 +299,8 @@ async def getColor(model, prompt) -> str:
             + prompt
             + "YOU MUST ONLY RETURN THE COLOR MOST SUITED FOR THE BRAND, AND NO OTHER TEXT. DO NOT USE ANY COLOR WHICH IS NOT MENTIONED IN THE LIST"
         )
+        if recommended_bg_color in yellow_color_dict.keys():
+            hex_color = yellow_color_dict[recommended_bg_color]
 
     if color_group == "pink":
         recommended_bg_color = model.query(
@@ -294,6 +310,11 @@ async def getColor(model, prompt) -> str:
             + prompt
             + "YOU MUST ONLY RETURN THE COLOR MOST SUITED FOR THE BRAND, AND NO OTHER TEXT. DO NOT USE ANY COLOR WHICH IS NOT MENTIONED IN THE LIST"
         )
+        if recommended_bg_color in pink_color_dict.keys():
+            hex_color = pink_color_dict[recommended_bg_color]
 
-    print(str(recommended_bg_color))
-    return str(recommended_bg_color)
+    if hex_color == "default":
+        hex_color = "#000000"
+
+    print(str(hex_color))
+    return str(hex_color)
