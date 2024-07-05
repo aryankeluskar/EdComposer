@@ -90,12 +90,12 @@ async def getColor(model, prompt) -> str:
     }
 
     orange_color_dict = {
-        "LightSalmon": "#FFA07A",
-        "Coral": "#FF7F50",
-        "Tomato": "#FF6347",
-        "OrangeRed": "#FF4500",
-        "DarkOrange": "#FF8C00",
-        "Orange": "#FFA500",
+        "light salmon": "#FFA07A",
+        "coral": "#FF7F50",
+        "tomato": "#FF6347",
+        "orange red": "#FF4500",
+        "dark orange": "#FF8C00",
+        "orange": "#FFA500",
     }
 
     yellow_color_dict = {
