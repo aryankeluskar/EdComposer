@@ -6,14 +6,11 @@ import os
 async def getInfo(file: UploadFile = File(), prompt: str = "") -> str:
     rag_info = None
 
-    # print("reached 1")
-
     try:
         contents = await file.read()
         os.environ["OPENAI_API_KEY"] = os.getenv("OPENAI_API_KEY")
         model = llm()
         model.reset()
-        # print("reached 2")
 
         print(file.filename)
         with open(file.filename, "wb") as f:
@@ -217,12 +214,6 @@ async def getColor(model, prompt) -> str:
         + str(basic_colors).replace("[", "").replace("]", "").replace("'", "")
     )
     color_group = color_group.lower()
-    color_group = color_group
-
-    # print elements of str(basic_colors) but without [ and ] and '
-    print()
-    print("--------------")
-    print("Color Group is " + color_group)
 
     # obtain recommended color group by asking AI to choose one out of the many in the color_group's dict
     recommended_bg_color = color_group
@@ -326,7 +317,7 @@ async def getColor(model, prompt) -> str:
         + "YOU MUST ONLY RETURN THE COLOR MOST SUITED FOR THE BRAND, AND NO OTHER TEXT. DO NOT USE ANY COLOR WHICH IS NOT MENTIONED IN THE LIST"
     )
 
-    print(recommended_fg_color.lower())
+    # print(recommended_fg_color.lower())
 
     if hex_color == "default":
         print("default encountered", recommended_bg_color)
@@ -349,10 +340,9 @@ async def getColor(model, prompt) -> str:
         elif recommended_bg_color in purple_color_dict.keys():
             hex_color = purple_color_dict[recommended_bg_color]
 
-
         if hex_color == "default":
             hex_color = "#000000"
 
-    print(recommended_bg_color)
-    print(str(hex_color))
+    # print(recommended_bg_color)
+    # print(str(hex_color))
     return str(hex_color)
