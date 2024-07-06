@@ -35,7 +35,9 @@ async def getInfo(file: UploadFile = File(), prompt: str = "") -> str:
 
         rag_info = model.query(querystr + prompt)
 
-        recommended_bg_color = await getColor(model, prompt)
+        result_getColor = await getColor(model, prompt)
+        recommended_bg_color = result_getColor[0]
+        recommended_fg_color = result_getColor[1]
 
         title_slide = model.query(
             "Give me 2-3 words that form the best title slide for " + prompt
@@ -45,7 +47,7 @@ async def getInfo(file: UploadFile = File(), prompt: str = "") -> str:
         # print("reached 2")
 
         # print(rag_info)
-        return (rag_info, recommended_bg_color, title_slide)
+        return (rag_info, recommended_bg_color, recommended_fg_color, title_slide)
 
     except Exception as e:
         print(e)

@@ -43,8 +43,9 @@ async def uploadInfo(
     result_getInfo = await getInfo(file, prompt)
     # print(result_getInfo)
     answer = result_getInfo[0]
-    title_slide_text = result_getInfo[1]
-    slides_bg_colors = result_getInfo[2]
+    slides_bg_colors = result_getInfo[1]
+    slides_fg_colors = result_getInfo[2]
+    title_slide_text = result_getInfo[3]
     # convert answer which is a str, to a json object
     answer = json.loads(answer)
 
@@ -60,4 +61,4 @@ async def uploadInfo(
     img_list = await getImages(answer)
     print(img_list)
 
-    return {"message": f"Successfuly processed {file.filename}", "answer": answer}
+    return {"message": f"Successfuly processed {file.filename}", "title": title_slide_text, "slides_bg_colors": slides_bg_colors, "slides_fg_colors": slides_fg_colors, "images": img_list,  "answer": answer}
