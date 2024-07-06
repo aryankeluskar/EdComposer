@@ -518,6 +518,7 @@ dependencies:
       - deprecated==1.2.14
       - dnspython==2.6.1
       - docstring-parser==0.16
+      - docx2txt==0.8
       - email-validator==2.1.1
       - embedchain==0.1.108
       - fastapi==0.111.0

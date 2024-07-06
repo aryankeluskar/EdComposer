@@ -44,12 +44,11 @@ async def getInfo(file: UploadFile = File(), prompt: str = "") -> str:
     print(title_slide)
 
     # print("reached 2")
-    
+
     await file.close()
 
     # print(rag_info)
     return (rag_info, recommended_bg_color, recommended_fg_color, title_slide)
-
 
 
 async def getColor(model, prompt) -> str:
