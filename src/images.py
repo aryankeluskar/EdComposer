@@ -1,3 +1,4 @@
+import time
 import requests
 import json
 import asyncio
@@ -11,10 +12,13 @@ async def getImages(info):
     for i in info:
         # using a custom api https://edcomposer.vercel.app/api/getGoogleResult?search={i['image']} for image search
         response = requests.get(
-            f"https://edcomposer.vercel.app/api/getGoogleResult?search={i['image']}. powerpoint presentation clipart style."
+            f"https://edcomposer.vercel.app/api/getGoogleResult?search={i['image']}%20powerpoint%20presentation%20clipart%20style."
         )
 
+        print("response: ", response.json())
+        print("------------------")
         img_url_list.append(response.json()[0])
+        time.sleep(1)
 
     return img_url_list
 

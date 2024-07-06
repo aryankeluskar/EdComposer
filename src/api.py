@@ -41,11 +41,14 @@ async def uploadInfo(
     prompt: Annotated[str, Form()] = "",
 ):
     result_getInfo = await getInfo(file, prompt)
+    print(result_getInfo)
     # print(result_getInfo)
+
     answer = result_getInfo[0]
     slides_bg_colors = result_getInfo[1]
     slides_fg_colors = result_getInfo[2]
     title_slide_text = result_getInfo[3]
+
     # convert answer which is a str, to a json object
     answer = json.loads(answer)
 
