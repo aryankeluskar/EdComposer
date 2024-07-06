@@ -319,29 +319,31 @@ async def getColor(model, prompt) -> str:
         + "YOU MUST ONLY RETURN THE COLOR MOST SUITED FOR THE BRAND, AND NO OTHER TEXT. DO NOT USE ANY COLOR WHICH IS NOT MENTIONED IN THE LIST"
     )
 
+    fg_hex_color = "#000000"
+
     if recommended_fg_color.lower() in red_color_dict.keys():
-        hex_color = red_color_dict[recommended_fg_color]
+        fg_hex_color = red_color_dict[recommended_fg_color]
 
     if recommended_fg_color.lower() in pink_color_dict.keys():
-        hex_color = pink_color_dict[recommended_fg_color]
+        fg_hex_color = pink_color_dict[recommended_fg_color]
 
     if recommended_fg_color.lower() in orange_color_dict.keys():
-        hex_color = orange_color_dict[recommended_fg_color]
+        fg_hex_color = orange_color_dict[recommended_fg_color]
 
     if recommended_fg_color.lower() in yellow_color_dict.keys():
-        hex_color = yellow_color_dict[recommended_fg_color]
+        fg_hex_color = yellow_color_dict[recommended_fg_color]
 
     if recommended_fg_color.lower() in green_color_dict.keys():
-        hex_color = green_color_dict[recommended_fg_color]
+        fg_hex_color = green_color_dict[recommended_fg_color]
 
     if recommended_fg_color.lower() in blue_color_dict.keys():
-        hex_color = blue_color_dict[recommended_fg_color]
+        fg_hex_color = blue_color_dict[recommended_fg_color]
 
     if recommended_fg_color.lower() in brown_color_dict.keys():
-        hex_color = brown_color_dict[recommended_fg_color]
+        fg_hex_color = brown_color_dict[recommended_fg_color]
 
     if recommended_fg_color.lower() in purple_color_dict.keys():
-        hex_color = purple_color_dict[recommended_fg_color]
+        fg_hex_color = purple_color_dict[recommended_fg_color]
 
     # print(recommended_fg_color.lower())
 
@@ -371,4 +373,4 @@ async def getColor(model, prompt) -> str:
 
     # print(recommended_bg_color)
     # print(str(hex_color))
-    return str(hex_color)
+    return (str(hex_color), str(fg_hex_color))
