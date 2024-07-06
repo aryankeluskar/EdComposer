@@ -61,4 +61,11 @@ async def uploadInfo(
     img_list = await getImages(answer)
     print(img_list)
 
-    return {"message": f"Successfuly processed {file.filename}", "title": title_slide_text, "slides_bg_colors": slides_bg_colors, "slides_fg_colors": slides_fg_colors, "images": img_list,  "answer": answer}
+    return {
+        "message": f"Successfuly processed {file.filename}",
+        "title": title_slide_text,
+        "slides_bg_colors": slides_bg_colors,
+        "slides_fg_colors": slides_fg_colors,
+        "images": img_list,
+        "answer": answer,
+    }
