@@ -79,7 +79,6 @@ async def uploadInfo(
 
     print(scenes_list)
 
-
     return {
         "message": f"Successfuly processed {file.filename}",
         "title": title_slide_text,
