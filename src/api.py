@@ -7,6 +7,7 @@ from dotenv import load_dotenv
 
 from info import getInfo
 from images import getImages
+from render import Scene
 
 load_dotenv()
 
@@ -68,8 +69,16 @@ async def uploadInfo(
         "title": title_slide_text,
         "slides_bg_colors": slides_bg_colors,
         "slides_fg_colors": slides_fg_colors,
-        "narration": "Let's explore " + title_slide_text
+        "narration": "Let's explore " + title_slide_text,
     }
+
+    scenes_list = []
+
+    for i in img_list:
+        scenes_list.append(Scene(audioURL="", imgURL=i, heading="", text=""))
+
+    print(scenes_list)
+
 
     return {
         "message": f"Successfuly processed {file.filename}",
