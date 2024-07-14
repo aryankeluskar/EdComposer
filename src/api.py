@@ -72,12 +72,8 @@ async def uploadInfo(
         "narration": "Let's explore " + title_slide_text,
     }
 
-    scenes_list = []
-
-    for i in img_list:
-        scenes_list.append(Scene(audioURL="", imgURL=i, heading="", text=""))
-
-    print(scenes_list)
+    for i in answer:
+        i["image"] = img_list.pop(0)
 
     return {
         "message": f"Successfuly processed {file.filename}",

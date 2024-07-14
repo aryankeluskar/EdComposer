@@ -1,38 +1,38 @@
 [
     {
-        "image": "A headshot of Aryan Keluskar",
-        "title": "Early Life",
-        "details": "Aryan Keluskar was born and raised in Hyderabad, India, where he developed a passion for technology from a young age.",
-        "narration": "Aryan Keluskar, a native of Hyderabad, India, discovered his love for technology during his formative years."
+        "image": "An illustration showing a person watching a video tutorial on a tablet.",
+        "title": "Video Tutorials",
+        "details": "Video tutorials are educational videos that demonstrate a process or concept visually.",
+        "narration": "Video tutorials are a popular form of visual learning, providing step-by-step guidance on various topics."
     },
     {
-        "image": "A laptop displaying code",
-        "title": "Education",
-        "details": "Aryan Keluskar pursued a Bachelor's of Science in Computer Science at Arizona State University, where he was part of the Grand Challengers Scholars Program and received the Most Innovative Design award at E2 Camp.",
-        "narration": "Aryan Keluskar studied Computer Science at Arizona State University, earning accolades for his innovative design work."
+        "image": "A diagram depicting the brain processing visual information.",
+        "title": "Visual Processing",
+        "details": "Visual processing is the brain's ability to interpret and make sense of visual information.",
+        "narration": "Visual processing involves the brain decoding and understanding visual stimuli received through the eyes."
     },
     {
-        "image": "A person working on a website design",
-        "title": "Professional Experience",
-        "details": "Aryan Keluskar worked as a Website Development Intern at RCV Innovations Pvt Ltd in Hyderabad, contributing to the design and development of immersive retail experiences and multi-page responsive websites.",
-        "narration": "Aryan Keluskar gained valuable experience as a Website Development Intern at RCV Innovations Pvt Ltd, enhancing retail experiences and website design."
+        "image": "A classroom setting with students engaged in a visual learning activity.",
+        "title": "Interactive Learning",
+        "details": "Interactive learning involves hands-on activities that engage multiple senses for better retention.",
+        "narration": "Interactive learning encourages active participation and enhances understanding through practical experience."
     },
     {
-        "image": "A group of volunteers working together",
-        "title": "Volunteering Experience",
-        "details": "Aryan Keluskar interned at the Youth Empowerment Foundation, where he created educational modules and designed engaging posters for webinars, showcasing his commitment to community service.",
-        "narration": "Aryan Keluskar dedicated his time to volunteering at the Youth Empowerment Foundation, creating educational content and visually appealing posters for webinars."
+        "image": "A graphic showing the benefits of visual aids in presentations.",
+        "title": "Visual Aids",
+        "details": "Visual aids such as charts, graphs, and diagrams help in presenting information in a visually appealing manner.",
+        "narration": "Visual aids enhance presentations by making complex information easier to understand and remember."
     },
     {
-        "image": "A person coding on a computer",
-        "title": "Skills & Interests",
-        "details": "Aryan Keluskar is proficient in a wide range of software development tools and languages, including HTML, CSS, JavaScript, Git, ReactJS, and more. He also has expertise in graphic design and spoken languages.",
-        "narration": "Aryan Keluskar possesses a diverse skill set in software development, graphic design, and spoken languages, showcasing his versatility and expertise."
+        "image": "An infographic illustrating the impact of visual learning on memory retention.",
+        "title": "Memory Retention",
+        "details": "Visual learning aids in memory retention by creating strong mental associations through images and visuals.",
+        "narration": "Visual learning improves memory retention by linking information to visual cues for better recall."
     },
     {
-        "image": "A certificate of achievement",
-        "title": "Awards & Accomplishments",
-        "details": "Aryan Keluskar has received several awards, including All India Rank 1 in the 5th IT Quiz, AP Scholar with Honor, and awards for academic excellence in subjects like Chemistry and Computer Science.",
-        "narration": "Aryan Keluskar has been recognized for his academic achievements, securing top ranks in IT quizzes and receiving prestigious awards for his academic performance."
+        "image": "A comparison chart showing the effectiveness of visual learning over traditional methods.",
+        "title": "Learning Efficiency",
+        "details": "Visual learning enhances learning efficiency by catering to different learning styles and improving comprehension.",
+        "narration": "Visual learning boosts learning efficiency by accommodating visual learners and promoting better understanding of complex concepts."
     }
 ]
