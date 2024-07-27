@@ -2,6 +2,8 @@ from fastapi import File, UploadFile
 from embedchain import App as llm
 import os
 
+import requests
+
 
 async def getInfo(file: UploadFile = File(), prompt: str = "") -> str:
     rag_info = None
@@ -33,6 +35,22 @@ async def getInfo(file: UploadFile = File(), prompt: str = "") -> str:
             """
 
     rag_info = model.query(querystr + prompt)
+
+    response = requests.post(
+        "https://gateway.ai.cloudflare.com/v1/" + os.getenv("CLOUDFLARE_ACCOUNT_ID") + "/" + os.getenv("CLOUDFLARE_GATEWAY_ID") + "/openai/chat/completions",
+        headers={"Authorization": "Bearer " + os.getenv("CLOUDFLARE_OPENAI_TOKEN"), "Content-Type": "application/json"},
+        json={
+            "model": "gpt-3.5-turbo",
+            "messages": [
+                {
+                    "role": "user",
+                    "content": "What is Cloudflare"
+                }
+            ]
+        }
+    )
+
+    print(response.json())
 
     result_getColor = await getColor(model, prompt)
     recommended_bg_color = result_getColor[0]

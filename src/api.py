@@ -7,7 +7,6 @@ from dotenv import load_dotenv
 
 from info import getInfo
 from images import getImages
-from render import Scene
 
 load_dotenv()
 
