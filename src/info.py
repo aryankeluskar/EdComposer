@@ -37,17 +37,19 @@ async def getInfo(file: UploadFile = File(), prompt: str = "") -> str:
     rag_info = model.query(querystr + prompt)
 
     response = requests.post(
-        "https://gateway.ai.cloudflare.com/v1/" + os.getenv("CLOUDFLARE_ACCOUNT_ID") + "/" + os.getenv("CLOUDFLARE_GATEWAY_ID") + "/openai/chat/completions",
-        headers={"Authorization": "Bearer " + os.getenv("CLOUDFLARE_OPENAI_TOKEN"), "Content-Type": "application/json"},
+        "https://gateway.ai.cloudflare.com/v1/"
+        + os.getenv("CLOUDFLARE_ACCOUNT_ID")
+        + "/"
+        + os.getenv("CLOUDFLARE_GATEWAY_ID")
+        + "/openai/chat/completions",
+        headers={
+            "Authorization": "Bearer " + os.getenv("CLOUDFLARE_OPENAI_TOKEN"),
+            "Content-Type": "application/json",
+        },
         json={
             "model": "gpt-3.5-turbo",
-            "messages": [
-                {
-                    "role": "user",
-                    "content": "What is Cloudflare"
-                }
-            ]
-        }
+            "messages": [{"role": "user", "content": "What is Cloudflare"}],
+        },
     )
 
     print(response.json())
