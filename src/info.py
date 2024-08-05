@@ -36,24 +36,6 @@ async def getInfo(file: UploadFile = File(), prompt: str = "") -> str:
 
     rag_info = model.query(querystr + prompt)
 
-    response = requests.post(
-        "https://gateway.ai.cloudflare.com/v1/"
-        + os.getenv("CLOUDFLARE_ACCOUNT_ID")
-        + "/"
-        + os.getenv("CLOUDFLARE_GATEWAY_ID")
-        + "/openai/chat/completions",
-        headers={
-            "Authorization": "Bearer " + os.getenv("CLOUDFLARE_OPENAI_TOKEN"),
-            "Content-Type": "application/json",
-        },
-        json={
-            "model": "gpt-3.5-turbo",
-            "messages": [{"role": "user", "content": "What is Cloudflare"}],
-        },
-    )
-
-    print(response.json())
-
     result_getColor = await getColor(model, prompt)
     recommended_bg_color = result_getColor[0]
     recommended_fg_color = result_getColor[1]
@@ -62,6 +44,8 @@ async def getInfo(file: UploadFile = File(), prompt: str = "") -> str:
         "Give me 2-3 words that form the best title slide for " + prompt
     )
     print(title_slide)
+
+    print("prompt: " + prompt)
 
     # print("reached 2")
 
@@ -220,8 +204,12 @@ async def getColor(model, prompt) -> str:
         "saddle brown": "#8B4513",
         "sienna": "#A0522D",
         "brown": "#A52A2A",
-        "maroon": "#800000",
+        "maroon": "#8C1D40",
     }
+
+    model.reset()
+
+    print("PROMPT: " + prompt)
 
     color_group = model.query(
         "which color strictly out of "
@@ -233,9 +221,13 @@ async def getColor(model, prompt) -> str:
     )
     color_group = color_group.lower()
 
+    print("COLOR GROUP: " + color_group)
+
     # obtain recommended color group by asking AI to choose one out of the many in the color_group's dict
     recommended_bg_color = color_group
     hex_color = "default"
+
+    model.reset()
 
     if color_group == "red":
         recommended_bg_color = model.query(
@@ -333,44 +325,6 @@ async def getColor(model, prompt) -> str:
         if recommended_bg_color.lower() in pink_color_dict.keys():
             hex_color = pink_color_dict[recommended_bg_color]
 
-    recommended_fg_color = model.query(
-        "If the background color is "
-        + recommended_bg_color
-        + " "
-        + color_group
-        + "then which color is most suitable foreground color for the text related to"
-        + prompt
-        + "YOU MUST ONLY RETURN THE COLOR MOST SUITED FOR THE BRAND, AND NO OTHER TEXT. DO NOT USE ANY COLOR WHICH IS NOT MENTIONED IN THE LIST"
-    )
-
-    recommended_fg_color = recommended_fg_color.lower()
-
-    fg_hex_color = "#000000"
-
-    if recommended_fg_color.lower() in red_color_dict.keys():
-        fg_hex_color = red_color_dict[recommended_fg_color]
-
-    if recommended_fg_color.lower() in pink_color_dict.keys():
-        fg_hex_color = pink_color_dict[recommended_fg_color]
-
-    if recommended_fg_color.lower() in orange_color_dict.keys():
-        fg_hex_color = orange_color_dict[recommended_fg_color]
-
-    if recommended_fg_color.lower() in yellow_color_dict.keys():
-        fg_hex_color = yellow_color_dict[recommended_fg_color]
-
-    if recommended_fg_color.lower() in green_color_dict.keys():
-        fg_hex_color = green_color_dict[recommended_fg_color]
-
-    if recommended_fg_color.lower() in blue_color_dict.keys():
-        fg_hex_color = blue_color_dict[recommended_fg_color]
-
-    if recommended_fg_color.lower() in brown_color_dict.keys():
-        fg_hex_color = brown_color_dict[recommended_fg_color]
-
-    if recommended_fg_color.lower() in purple_color_dict.keys():
-        fg_hex_color = purple_color_dict[recommended_fg_color]
-
     # print(recommended_fg_color.lower())
 
     if hex_color == "default":
@@ -397,6 +351,23 @@ async def getColor(model, prompt) -> str:
         if hex_color == "default":
             hex_color = "#000000"
 
+    fg_hex_color = await getFGColor(hex_color)
+
     # print(recommended_bg_color)
     # print(str(hex_color))
     return (str(hex_color), str(fg_hex_color))
+
+async def getFGColor(hex_code):
+    # decompose the hex code int RGB
+    r = int(hex_code[1:3], 16)
+    g = int(hex_code[3:5], 16)
+    b = int(hex_code[5:7], 16)
+
+    # get the luminance
+    luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255
+    print(luminance)
+
+    if luminance > 0.5:
+        return "#000000"
+    else:
+        return "#ffffff"

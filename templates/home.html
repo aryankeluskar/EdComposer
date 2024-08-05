@@ -170,10 +170,11 @@
                                   <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"/>
                               </svg>
                               <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span class="font-semibold">Click to upload</span> or drag and drop</p>
-                              <p class="text-xs text-gray-500 dark:text-gray-400">SVG, PNG, JPG or GIF (MAX. 800x400px)</p>
+                              <p class="text-xs text-gray-500 dark:text-gray-400">PDF, PNG, JPG or GIF (MAX. 20MB)</p>
                           </div>
-                          <input id="dropzone-file" name="file" type="file" class="hidden" />
+                          <input id="dropzone-file" name="file" type="file" class="hidden" onchange="document.getElementById('uploaded-file').textContent = this.files[0].name"/>
                       </label>
+                      <span id="uploaded-file" class="text-xs text-gray-500 dark:text-gray-400"></span>
                     </div> 
 
                     
@@ -185,11 +186,21 @@
                       <label class="cz99u" for="text">Prompt</label>
                       <div class="ckwv3">
                         <div class="cis7l cwysf cud52 chwso c9v7h cr8aa cu4yo cezsk cyi7p">
-                          <svg class="cdyx3" xmlns="http://www.w3.org/2000/svg" width="16" height="14">
-                            <path
-                              d="M14 0H2a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2Zm0 12H2V5.723l5.504 3.145a.998.998 0 0 0 .992 0L14 5.723V12Zm0-8.58L8 6.849 2 3.42V2h12v1.42Z">
-                            </path>
-                          </svg>
+                          <svg height="16px" width="16px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+	 viewBox="0 0 57.231 57.231" xml:space="preserve">
+<g>
+	<g>
+		<path style="fill:rgb(108, 114, 127);" d="M23.945,9.373c-1.652,0-2.992,1.341-2.992,2.992c0,1.654,1.34,2.992,2.992,2.992
+			c3.656,0,6.921,2.042,8.524,5.333c0.519,1.062,1.583,1.68,2.691,1.68c0.441,0,0.888-0.097,1.309-0.303
+			c1.486-0.723,2.104-2.514,1.379-4.001C35.235,12.704,29.906,9.373,23.945,9.373z"/>
+		<path style="fill:rgb(108, 114, 127);;" d="M56.135,50.469l-9.971-9.972c2.952-4.152,4.705-9.213,4.705-14.685
+			c0-14.025-11.41-25.435-25.435-25.435S0,11.787,0,25.812c0,14.024,11.409,25.434,25.434,25.434c5.859,0,11.245-2.01,15.549-5.351
+			l9.862,9.862c0.73,0.73,1.689,1.096,2.645,1.096c0.958,0,1.915-0.365,2.645-1.096C57.596,54.298,57.596,51.93,56.135,50.469z
+			 M5.986,25.813c0-10.725,8.726-19.45,19.45-19.45s19.45,8.725,19.45,19.45c0,4.462-1.525,8.566-4.063,11.852
+			c-0.839,1.085-1.781,2.086-2.827,2.973c-3.392,2.878-7.773,4.625-12.56,4.625C14.711,45.262,5.986,36.537,5.986,25.813z"/>
+	</g>
+</g>
+</svg>
                         </div>
                         <input id="text" name="prompt" class="coyoz cc7et coe0p cyujy cjygq" type="text"
                           placeholder="Enter a prompt or just the title..." required="">

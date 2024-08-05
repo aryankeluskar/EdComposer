@@ -20,7 +20,13 @@ app.add_middleware(
     allow_credentials=True,
 )
 
-app.mount("/homepage_files", StaticFiles(directory="/Users/aryank/Developer/EdComposer/templates/homepage_files"), name="homepage_files")
+app.mount(
+    "/homepage_files",
+    StaticFiles(
+        directory="/Users/aryank/Developer/EdComposer/templates/homepage_files"
+    ),
+    name="homepage_files",
+)
 
 
 @app.get("/")
