@@ -3,6 +3,7 @@ from typing import Annotated
 from fastapi import FastAPI, File, UploadFile, Form
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
+from fastapi.staticfiles import StaticFiles
 from dotenv import load_dotenv
 
 from info import getInfo
@@ -19,6 +20,8 @@ app.add_middleware(
     allow_credentials=True,
 )
 
+app.mount("/homepage_files", StaticFiles(directory="/Users/aryank/Developer/EdComposer/templates/homepage_files"), name="homepage_files")
+
 
 @app.get("/")
 async def root():
@@ -32,7 +35,7 @@ async def root():
     Returns:
         FileResponse: A FileResponse object representing the "index.html" file.
     """
-    return FileResponse("templates/index.html")
+    return FileResponse("templates/home.html")
 
 
 @app.post("/upload")
