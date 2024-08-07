@@ -2,8 +2,6 @@ from fastapi import File, UploadFile
 from embedchain import App as llm
 import os
 
-import requests
-
 
 async def getInfo(file: UploadFile = File(), prompt: str = "") -> str:
     rag_info = None
@@ -356,6 +354,7 @@ async def getColor(model, prompt) -> str:
     # print(recommended_bg_color)
     # print(str(hex_color))
     return (str(hex_color), str(fg_hex_color))
+
 
 async def getFGColor(hex_code):
     # decompose the hex code int RGB

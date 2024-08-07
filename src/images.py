@@ -23,11 +23,15 @@ async def getImages(info):
                 break  # exit the loop if the request is successful
             except Exception:
                 current_retry += 1
-                print(f"Retrying in 1 second... (attempt {current_retry}/{max_retries})")
+                print(
+                    f"Retrying in 1 second... (attempt {current_retry}/{max_retries})"
+                )
                 time.sleep(1)
 
         if current_retry == max_retries:
-            print(f"Failed to retrieve image after {max_retries} attempts. Skipping this image.")
+            print(
+                f"Failed to retrieve image after {max_retries} attempts. Skipping this image."
+            )
             continue
 
         time.sleep(1)
