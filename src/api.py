@@ -6,8 +6,8 @@ from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
 from dotenv import load_dotenv
 
-from info import getInfo
-from images import getImages
+from src.info import getInfo
+from src.images import getImages
 
 load_dotenv()
 
