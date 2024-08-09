@@ -2,7 +2,6 @@ import json
 from typing import Annotated
 from fastapi import FastAPI, File, UploadFile, Form
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
 from dotenv import load_dotenv
 import os
@@ -25,9 +24,7 @@ app.add_middleware(
 
 app.mount(
     "/templates",
-    StaticFiles(
-        directory=os.path.join(os.path.dirname(__file__), "templates")
-    ),
+    StaticFiles(directory=os.path.join(os.path.dirname(__file__), "templates")),
     name="templates",
 )
 
