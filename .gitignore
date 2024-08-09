@@ -110,3 +110,4 @@ venv.bak/
 
 # Ruff Cache
 .ruff_cache/
+.vercel

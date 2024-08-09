@@ -5,6 +5,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
 from dotenv import load_dotenv
+import os
 
 from src.info import getInfo
 from src.images import getImages
@@ -20,12 +21,14 @@ app.add_middleware(
     allow_credentials=True,
 )
 
+# raise Exception(os.path.join(os.path.dirname(__file__), "templates"))
+
 app.mount(
-    "/homepage_files",
+    "/templates",
     StaticFiles(
-        directory="/Users/aryank/Developer/EdComposer/templates/homepage_files"
+        directory=os.path.join(os.path.dirname(__file__), "templates")
     ),
-    name="homepage_files",
+    name="templates",
 )
 
 
@@ -41,7 +44,10 @@ async def root():
     Returns:
         FileResponse: A FileResponse object representing the "index.html" file.
     """
-    return FileResponse("templates/home.html")
+    # print list of files in templates directory
+    print(os.listdir())
+    return os.listdir()
+    # return FileResponse("home.html")
 
 
 @app.post("/upload")
