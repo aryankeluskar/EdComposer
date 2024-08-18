@@ -24,10 +24,12 @@ app.add_middleware(
 
 # put everything in /templates folder for fastapi
 current_dir = os.path.dirname(os.path.abspath(__file__))
-print("="*20)
+print("=" * 20)
 print(current_dir)
-app.mount("/templates", StaticFiles(directory=current_dir+"/templates"), name="templates") 
-app.mount("/", StaticFiles(directory=current_dir+"/"), name="/") 
+app.mount(
+    "/templates", StaticFiles(directory=current_dir + "/templates"), name="templates"
+)
+
 
 @app.get("/")
 async def root():
@@ -43,7 +45,7 @@ async def root():
     """
     # print list of files in templates directory
     # return os.listdir()
-    return FileResponse(current_dir+"/templates/home.html")
+    return FileResponse(current_dir + "/templates/home.html")
 
 
 @app.post("/upload")
@@ -51,8 +53,6 @@ async def uploadInfo(
     file: UploadFile = File(),
     prompt: Annotated[str, Form()] = "",
 ):
-    return "hi"
-    print("reached 1")
     result_getInfo = await getInfo(file, prompt)
     print(result_getInfo)
     # print(result_getInfo)

@@ -23,7 +23,7 @@ async def generate_voice(sentence, index):
     }
 
     response = requests.post(url, json=data, headers=headers)
-    print(response.text)
+    # print(response.text)
     with open(f"output_{index}.mp3", "wb") as f:
         for chunk in response.iter_content(chunk_size=CHUNK_SIZE):
             if chunk:
