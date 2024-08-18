@@ -2,13 +2,14 @@ import json
 from typing import Annotated
 from fastapi import FastAPI, File, UploadFile, Form
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
 from dotenv import load_dotenv
 import os
 
-from info import getInfo
-from images import getImages
-from voice import generate_voice
+from src.info import getInfo
+from src.images import getImages
+from src.voice import generate_voice
 
 load_dotenv()
 
@@ -21,15 +22,12 @@ app.add_middleware(
     allow_credentials=True,
 )
 
-templates_dir = os.path.join(os.path.dirname(__file__), "templates", "homepage_files")
-app.mount(
-    "/homepage_files",
-    StaticFiles(
-        directory=templates_dir,
-    ),
-    name="homepage_files",
-)
-
+# put everything in /templates folder for fastapi
+current_dir = os.path.dirname(os.path.abspath(__file__))
+print("="*20)
+print(current_dir)
+app.mount("/templates", StaticFiles(directory=current_dir+"/templates"), name="templates") 
+app.mount("/", StaticFiles(directory=current_dir+"/"), name="/") 
 
 @app.get("/")
 async def root():
@@ -44,9 +42,8 @@ async def root():
         FileResponse: A FileResponse object representing the "index.html" file.
     """
     # print list of files in templates directory
-    print(os.listdir())
-    return os.listdir()
-    # return FileResponse("home.html")
+    # return os.listdir()
+    return FileResponse(current_dir+"/templates/home.html")
 
 
 @app.post("/upload")
@@ -54,6 +51,8 @@ async def uploadInfo(
     file: UploadFile = File(),
     prompt: Annotated[str, Form()] = "",
 ):
+    return "hi"
+    print("reached 1")
     result_getInfo = await getInfo(file, prompt)
     print(result_getInfo)
     # print(result_getInfo)
