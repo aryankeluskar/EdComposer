@@ -30,11 +30,13 @@ app.mount(
     "/templates", StaticFiles(directory=current_dir + "/templates"), name="templates"
 )
 app.mount(
-    "/homepage_files", StaticFiles(directory=current_dir + "/homepage_files"), name="homepage_files"
+    "/homepage_files",
+    StaticFiles(directory=current_dir + "/homepage_files"),
+    name="homepage_files",
 )
 
 
-@app.get("/")
+@app.get("/edcomposer")
 async def root():
     r"""
     ### Root Endpoint
@@ -48,10 +50,10 @@ async def root():
     """
     # print list of files in templates directory
     # return os.listdir()
-    return FileResponse(current_dir + "/templates/home.html")
+    return FileResponse(current_dir + "/templates/edcomposer.html")
 
 
-@app.post("/upload")
+@app.post("/edcomposer/upload")
 async def uploadInfo(
     file: UploadFile = File(),
     prompt: Annotated[str, Form()] = "",
