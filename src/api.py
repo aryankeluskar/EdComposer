@@ -22,7 +22,7 @@ app.add_middleware(
     allow_credentials=True,
 )
 
-templates_dir = os.path.join(os.path.dirname(__file__), 'templates', 'homepage_files')
+templates_dir = os.path.join(os.path.dirname(__file__), "templates", "homepage_files")
 app.mount(
     "/homepage_files",
     StaticFiles(
@@ -30,6 +30,7 @@ app.mount(
     ),
     name="homepage_files",
 )
+
 
 @app.get("/")
 async def root():
@@ -86,7 +87,6 @@ async def uploadInfo(
         i["image"] = img_list.pop(0)
         print(i["details"])
         await generate_voice(i["details"], ind)
-
 
     return {
         "message": f"Successfuly processed {file.filename}",
