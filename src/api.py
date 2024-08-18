@@ -5,9 +5,11 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
 from dotenv import load_dotenv
+import os
 
 from info import getInfo
 from images import getImages
+from voice import generate_voice
 
 load_dotenv()
 
@@ -20,14 +22,14 @@ app.add_middleware(
     allow_credentials=True,
 )
 
+templates_dir = os.path.join(os.path.dirname(__file__), 'templates', 'homepage_files')
 app.mount(
     "/homepage_files",
     StaticFiles(
-        directory="/Users/aryank/Developer/EdComposer/templates/homepage_files"
+        directory=templates_dir,
     ),
     name="homepage_files",
 )
-
 
 @app.get("/")
 async def root():
@@ -80,8 +82,11 @@ async def uploadInfo(
         "narration": "Let's explore " + title_slide_text,
     }
 
-    for i in answer:
+    for ind, i in enumerate(answer):
         i["image"] = img_list.pop(0)
+        print(i["details"])
+        await generate_voice(i["details"], ind)
+
 
     return {
         "message": f"Successfuly processed {file.filename}",
