@@ -36,7 +36,7 @@ app.mount(
 )
 
 
-@app.get("/edcomposer")
+@app.get("/")
 async def root():
     r"""
     ### Root Endpoint
@@ -53,7 +53,7 @@ async def root():
     return FileResponse(current_dir + "/templates/edcomposer.html")
 
 
-@app.post("/edcomposer/upload")
+@app.post("/upload")
 async def uploadInfo(
     file: UploadFile = File(),
     prompt: Annotated[str, Form()] = "",
