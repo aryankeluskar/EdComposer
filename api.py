@@ -29,6 +29,9 @@ print(current_dir)
 app.mount(
     "/templates", StaticFiles(directory=current_dir + "/templates"), name="templates"
 )
+app.mount(
+    "/homepage_files", StaticFiles(directory=current_dir + "/homepage_files"), name="homepage_files"
+)
 
 
 @app.get("/")
