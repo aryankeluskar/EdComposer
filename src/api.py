@@ -6,8 +6,9 @@ from fastapi.staticfiles import StaticFiles
 from dotenv import load_dotenv
 import os
 
-from src.info import getInfo
-from src.images import getImages
+from info import getInfo
+from images import getImages
+from voice import generate_voice
 
 load_dotenv()
 
@@ -20,12 +21,13 @@ app.add_middleware(
     allow_credentials=True,
 )
 
-# raise Exception(os.path.join(os.path.dirname(__file__), "templates"))
-
+templates_dir = os.path.join(os.path.dirname(__file__), "templates", "homepage_files")
 app.mount(
-    "/templates",
-    StaticFiles(directory=os.path.join(os.path.dirname(__file__), "templates")),
-    name="templates",
+    "/homepage_files",
+    StaticFiles(
+        directory=templates_dir,
+    ),
+    name="homepage_files",
 )
 
 
@@ -83,8 +85,10 @@ async def uploadInfo(
         "narration": "Let's explore " + title_slide_text,
     }
 
-    for i in answer:
+    for ind, i in enumerate(answer):
         i["image"] = img_list.pop(0)
+        print(i["details"])
+        await generate_voice(i["details"], ind)
 
     return {
         "message": f"Successfuly processed {file.filename}",
