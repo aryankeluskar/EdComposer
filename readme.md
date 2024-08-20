@@ -26,8 +26,9 @@ pip install requirements.txt
 
 Copy the `.env.example` file to `.env` and fill in the values.
 
-```config
-#TODO
+```bash
+export OPENAI_API_KEY="sk_YOUR_API_KEY" # Replace with your OpenAI API key (https://platform.openai.com/account/api-keys)
+export ELEVENLABS_API_KEY='sk_YOUR_API_KEY' # Replace with your ElevenLabs API key (https://elevenlabs.io/
 ```
 
 
