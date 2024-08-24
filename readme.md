@@ -14,12 +14,14 @@
 
 ### 1. Generate a repo using this template
 
-Use `git clone`
+```bash
+gh repo clone aryankeluskar/EdComposer
+```
 
 ### 2. Install dependencies
 
 ```bash
-pip install requirements.txt
+pip install -r requirements.txt
 ```
 
 ### 3. Create `.env` file
